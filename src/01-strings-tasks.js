@@ -227,10 +227,16 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13() {
-  const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  const code = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-  
+function encodeToRot13(str) {
+  const str2 = str.split('');
+  const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ?!,.-_:;'.split('');
+  const code = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm ?!,.-_:;'.split('');
+  const newArr = [];
+  const newStr = [];
+
+  str2.forEach((item) => newArr.push(alpha.indexOf(item)));
+  newArr.forEach((elem) => newStr.push(code[elem]));
+  return newStr.join('');
 }
 
 /**
