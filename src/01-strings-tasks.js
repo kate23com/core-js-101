@@ -235,7 +235,7 @@ function encodeToRot13(str) {
   const newStr = [];
 
   str2.forEach((item) => newArr.push(alpha.indexOf(item)));
-  newArr.forEach((elem) => newStr.push(code[elem]));
+  newArr.forEach((item) => newStr.push(code[item]));
   return newStr.join('');
 }
 
