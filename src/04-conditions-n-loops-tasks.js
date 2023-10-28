@@ -142,8 +142,19 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  const a1 = rect1.top + rect1.height;
+  const a2 = rect2.top + rect2.height;
+  const b1 = rect1.left + rect1.width;
+  const b2 = rect2.left + rect2.width;
+
+  let flag = false;
+
+  if (rect1.left < b2 && b1 > rect2.left && rect1.top < a2 && a1 > rect2.top) {
+    flag = true;
+  }
+
+  return flag;
 }
 
 
@@ -189,8 +200,8 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  return str.split('').find((el, index, arr) => arr.indexOf(el) === arr.lastIndexOf(el)) || null;
 }
 
 
@@ -216,8 +227,28 @@ function findFirstSingleChar(/* str */) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  const bracket1 = '[';
+  const bracket2 = ']';
+  let start = '(';
+  let end = ')';
+  let str;
+
+  if (isStartIncluded === true) {
+    start = bracket1;
+  }
+
+  if (isEndIncluded === true) {
+    end = bracket2;
+  }
+
+  if (a < b) {
+    str = `${start}${a}, ${b}${end}`;
+  } else {
+    str = `${start}${b}, ${a}${end}`;
+  }
+
+  return str;
 }
 
 
