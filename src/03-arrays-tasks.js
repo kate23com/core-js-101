@@ -204,8 +204,8 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  return arr.join('\n');
 }
 
 /**
@@ -272,8 +272,17 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  const newArr = [];
+
+  arr.filter((elem, index) => {
+    const a = new Array(index + 1);
+    a.fill(elem);
+    newArr.push(...a);
+    return newArr;
+  });
+
+  return newArr;
 }
 
 
@@ -444,8 +453,23 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  let arr = new Array(n * n);
+
+  arr = arr.fill(0).map((item, index) => {
+    let one = item;
+    if (index % (n + 1) === 0) {
+      one = 1;
+    } else {
+      one = 0;
+    }
+    return one;
+  });
+
+  arr = arr.reduce((accum, item, index) => (index % n === 0 ? accum.push([item])
+    : accum[accum.length - 1].push(item)) && accum, []);
+
+  return arr;
 }
 
 /**

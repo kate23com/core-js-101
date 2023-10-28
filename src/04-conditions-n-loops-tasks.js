@@ -96,8 +96,17 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  let flag = true;
+  if ((a + b <= c) || (a + c <= b) || (b + c <= a)) {
+    flag = false;
+  } else if ((a <= 0) || (b <= 0) || (c <= 0)) {
+    flag = false;
+  } else {
+    flag = true;
+  }
+
+  return flag;
 }
 
 
@@ -348,8 +357,8 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return (num).toString(n);
 }
 
 
